@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      new Trello
+      neo Trello
     </header>
     <main>
       <p class="info-line">All: {{ totalCardCount }} tasks</p>
