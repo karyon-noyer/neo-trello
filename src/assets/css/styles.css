@@ -1,0 +1,389 @@
+html {
+  background: lightblue;
+  font-family: "Avenir", Helvetica, Arial, "system-ui", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+  width: 100%;
+  height: 100%;
+  overflow-x: scroll;
+}
+
+header {
+  background: lightblue;
+  height: 70px;
+  color: white;
+  font-style: italic;
+  font-size: 40px;
+  text-align: left;
+  padding: 20px;
+}
+
+main {
+  padding: 0 10px;
+  width: calc(100% - 40px);
+  height: 100%;
+}
+
+.info-line {
+  margin: 20px;
+  font-size: 20px;
+}
+
+.list-index {
+  display: flex;
+}
+
+.addlist {
+  margin: 0 10px auto;
+  display: inline-block;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 320px;
+  width: 320px;
+}
+
+.text-input {
+  padding: 20px 15px;
+  width: calc(100% - 30px);
+  background-color: #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  font-family: "Noto Sans Japanese", "Noto Sans", "system-ui", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #242424;
+  cursor: pointer;
+  overflow: overlay;
+}
+
+.text-input:focus {
+  outline: 0;
+  cursor: initial;
+}
+
+.add-button {
+  margin-top: 15px;
+  padding: 15px 18px;
+  background-color: #999;
+  border: none;
+  border-radius: 8px;
+  font-family: "Noto Sans Japanese", "Noto Sans", "system-ui", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #fff;
+}
+
+.add-button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.active .text-input {
+  background-color: #fff;
+}
+.addable .add-button {
+  background-color: #00d78f;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.add-button:active {
+  background-color: #00d78f;
+}
+
+.list {
+  margin: 0 5px auto;
+  position: relative;
+  display: inline-block;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 290px;
+  width: 290px;
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+  border: solid #ddd 1px;
+  color: gray;
+  vertical-align: top;
+}
+
+.listheader {
+  width: 290px;
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+.list-title {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 15px;
+}
+
+.list-counter {
+  color: rgb(0, 140, 255);
+  padding: 15px;
+}
+
+.deletelist {
+  position: absolute;
+  top: 6px;
+  right: 14px;
+  font-size: 28px;
+}
+
+.deletelist:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.card {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  display: flex;
+  padding: 30px 15px 40px;
+  background-color: #fff;
+  border-radius: 8px;
+  width: 260px;
+  cursor: pointer;
+}
+
+.close-button {
+  position: absolute;
+  top: 6px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+  border-radius: 8px;
+  border-color: red;
+  border-style: solid;
+  background-color: red;
+  color: white;
+  margin: 5px;
+}
+
+.body {
+  font-size: 18px;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.modal-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 30;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-window {
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 40%;
+  height: 50%;
+}
+
+.modal-content {
+  padding: 10px 20px;
+}
+
+.modal-footer {
+  padding: 10px;
+  text-align: left;
+}
+
+/* オーバーレイのトランジション */
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.4s;
+
+  /* オーバーレイに包含されているモーダルウィンドウのトランジション */
+  .modal-window {
+    transition: opacity 0.4s, transform 0.4s;
+  }
+}
+
+/* ディレイを付けるとモーダルウィンドウが消えた後にオーバーレイが消える */
+.modal-leave-active {
+  transition: opacity 0.6s ease 0.4s;
+}
+
+.modal-enter,
+.modal-leave-to {
+  opacity: 0;
+
+  .modal-window {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.send-button,
+.open-modal-button {
+  background: #eb516b;
+  border: none;
+  border-radius: 2px;
+  padding: 4px 16px;
+  color: #fff;
+  transition: background-color 0.25s;
+  cursor: pointer;
+}
+.open-modal-button {
+  position: absolute;
+  top: 46px;
+  right: 15px;
+  border: none;
+  border-radius: 2px;
+  padding: 4px 16px;
+  color: #fff;
+  transition: background-color 0.25s;
+  cursor: pointer;
+  border-color: #eb516b;
+  border-style: solid;
+  background-color: #eb516b;
+  color: white;
+  margin: 5px;
+}
+
+.card {
+  position: relative;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  background-color: #fff;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* .close-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: red;
+} */
+
+/* ラベルのスタイル */
+.label {
+  display: inline-block;
+  padding: 4px 8px;
+  margin-right: 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* ラベルの色別スタイル */
+.label-red {
+  color: white;
+  background-color: red;
+}
+
+.label-blue {
+  color: white;
+  background-color: blue;
+}
+
+.label-green {
+  color: white;
+  background-color: green;
+}
+
+.label-yellow {
+  color: black;
+  background-color: yellow;
+}
+
+textarea,
+input {
+  width: 100%;
+  margin: 8px 0;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* v-selectのスタイル調整 */
+.v-select {
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-family: "Noto Sans Japanese", "Noto Sans", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+}
+.v-select .vs__clear {
+  position: absolute;
+  font-size: 22px;
+  cursor: pointer;
+  border-radius: 8px;
+  border-color: lightgray;
+  border-style: solid;
+  background-color: lightgray;
+  color: white;
+  margin-top: -75px;
+  margin-left: 80px;
+}
+
+.v-select .vs__dropdown-toggle:hover {
+  border-color: #999;
+}
+
+.v-select .vs__dropdown-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.v-select .vs__dropdown-option {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.v-select .vs__dropdown-option:hover {
+  background-color: #f0f0f0;
+}
+
+.v-select .vs__dropdown-option--selected {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.v-select .vs__selected {
+  padding: 4px 8px;
+  border-radius: 4px;
+  /* background-color: #eb516b;
+  color: white; */
+  font-weight: bold;
+}
+
+/* 選択肢が存在しない場合の表示 */
+.v-select .vs__no-options {
+  padding: 8px;
+  color: #888;
+  text-align: center;
+}
